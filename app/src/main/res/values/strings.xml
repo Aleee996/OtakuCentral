@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">OtakuCentral</string>
+    <string name="textTopTvAnime">Top Anime Series</string>
+    <string name="textTopMovieAnime">Top Anime Movies</string>
+    <string name="textTopManga">Top Manga</string>
+    <string name="textResultsFound">"Results found for %s"</string>
+    <string name="textResultsNotFound">"No results found for %s"</string>
+    <string name="home">Home</string>
+    <string name="networkError">Sorry! A network error occurred</string>
+    <string name="noEpisodesError">Sorry! No episodes available for this show</string>
+
+</resources>

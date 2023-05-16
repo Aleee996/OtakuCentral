@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textTopTvAnime">Top Serie Anime</string>
+    <string name="app_name">OtakuCentral</string>
+    <string name="textTopMovieAnime">Top Film Anime</string>
+    <string name="textTopManga">Top Manga</string>
+    <string name="textResultsFound">Risultati trovati per %s</string>
+    <string name="textResultsNotFound">Nessun risultato per %s</string>
+    <string name="home">Home</string>
+    <string name="networkError">Spiacenti, si è verificato un errore di rete</string>
+    <string name="noEpisodesError">Spiacenti, non sono disponibili gli episodi</string>
+</resources>
