@@ -7,6 +7,51 @@
     <string name="textResultsNotFound">"No results found for %s"</string>
     <string name="home">Home</string>
     <string name="networkError">Sorry! A network error occurred</string>
-    <string name="noEpisodesError">Sorry! No episodes available for this show</string>
+    <string name="noEpisodesError">Sorry! No episodes info available for this show</string>
+    <string name="listChapters">Chapters</string>
+    <string name="nullChapters">Sorry! Chapters info not available</string>
+    <string name="wrongChapter">The value inserted is not valid</string>
+    <string name="chaptersHint">Read/Total</string>
+    <string name="chaptersHintNoMax">Read</string>
+    <string name="dialog_remove_from_list">Are you sure you want to remove the item?\nThis action will remove all related data</string>
+    <string name="cancel_dialog_remove_from_list">Cancel</string>
+    <string name="confirm_dialog_remove_from_list">Confirm</string>
+    <string name="animeWatchlist">Your episodes watchlist</string>
+    <string name="mangaReadlist">Your chapters readlist</string>
+    <string name="textGenresError">your genres</string>
+    <string name="genresSuggestion">Based on your preferences on %s genre</string>
+    <string name="finishedElement">Congratulations for finishing %s!</string>
+    <string name="watchedEp">%d more to go for %s!</string>
+    <string name="watchedEpNoMax">You have completed #%d of %s</string>
+    <string name="emptyFollowedList">Nothing to see here!\nGo add something to your list and have fun!</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="completedAnime">Anime you have completed</string>
+    <string name="completedManga">Manga you have completed</string>
+    <string name="settingsButton">Settings</string>
+    <string name="genres">Genres</string>
+    <string name="genresAnime">Set your favourite anime genres</string>
+    <string name="genresManga">Set your favourite manga genres</string>
+    <string name="mangaSettings">Manga Settings</string>
+    <string name="volumesVSchapters">Save manga as volumes</string>
+    <string name="volumesVSchaptersON">Tracking manga data as volumes</string>
+    <string name="volumesVSchaptersOFF">Tracking manga data as chapters</string>
+    <string name="animeSettings">Anime Settings</string>
+    <string name="hoursWatched">TOTAL VIEW TIME\n%s</string>
+    <string name="episodesWatched">TOTAL EPISODES WATCHED\n%d</string>
+    <string name="chaptersRead">TOTAL CHAPTERS READ\n%d</string>
 
 </resources>

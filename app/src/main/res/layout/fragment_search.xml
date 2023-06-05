@@ -6,14 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".SearchFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/exploreAnimeButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="WIP: suggerimenti per genere"
-        android:textSize="34sp"
+        android:background="@null"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="Anime"
+        android:theme="@style/TogglingButtons"
+        app:layout_constraintEnd_toStartOf="@+id/exploreMangaButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/exploreMangaButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="Manga"
+        android:theme="@style/TogglingButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/exploreAnimeButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textExplore"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exploreAnimeButton" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listExplore"
+        android:name="com.example.animeshowtime.SearchFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textExplore"
+        tools:context=".SearchFragment"
+        tools:listitem="@layout/fragment_explore_genres" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

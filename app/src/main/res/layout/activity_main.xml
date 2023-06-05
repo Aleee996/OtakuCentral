@@ -6,17 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:theme="@style/GeneralBackground"
-
     >
-
-
-    <!--<ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/searchButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">-->
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
@@ -24,10 +14,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    </androidx.fragment.app.FragmentContainerView>
-    <!--</ScrollView>-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,7 +38,7 @@
             android:paddingBottom="12dp"
             app:backgroundTint="@color/black"
             app:cornerRadius="0dip"
-            app:icon="@drawable/ic_home"
+            app:icon="@drawable/ic_house"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconTint="@color/white"
@@ -88,7 +76,7 @@
             android:paddingBottom="12dp"
             app:backgroundTint="@color/black"
             app:cornerRadius="0dip"
-            app:icon="@drawable/ic_manga"
+            app:icon="@drawable/ic_comic"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconTint="@color/white"
@@ -107,7 +95,7 @@
             android:paddingBottom="12dp"
             app:backgroundTint="@color/black"
             app:cornerRadius="0dip"
-            app:icon="@drawable/ic_profile"
+            app:icon="@drawable/ic_otaku"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconTint="@color/white"
@@ -118,6 +106,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

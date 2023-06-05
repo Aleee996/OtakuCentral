@@ -32,8 +32,6 @@ class TopFragment : RecyclerFragment(
 
     private lateinit var binding : FragmentTopListBinding
     private var rowCount = 1
-    private val ANIME = 0
-    private val MANGA = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         searchString[ANIME] = "https://api.jikan.moe/v4/top/anime?type=tv,movie"

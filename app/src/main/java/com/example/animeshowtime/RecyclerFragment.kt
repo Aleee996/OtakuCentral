@@ -1,9 +1,14 @@
 package com.example.animeshowtime
 
+import android.graphics.Color
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Deferred
@@ -23,6 +28,17 @@ abstract class RecyclerFragment(
     protected var nScrolls : Array<Int>,
     protected var hasNextPage : Array<Boolean>
 ) : Fragment() {
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 
     protected fun manageApi(
         noResultFoundTextView: TextView,
@@ -59,8 +75,10 @@ abstract class RecyclerFragment(
                     noResultFoundTextView.text =
                         getString(R.string.textResultsNotFound, searchedElement)
 
-                else if (searchedElement == "Episodes" && jsonList[i].size <= 1 && tempJsonList.isEmpty())
+                else if (searchedElement == "Episodes" && jsonList[i].size <= 1 && tempJsonList.isEmpty()) {
+                    noResultFoundTextView.setTextColor(Color.parseColor("#DD2C00"))
                     noResultFoundTextView.text = getText(R.string.noEpisodesError)
+                }
 
                 //else update recycler
                 else {
@@ -74,6 +92,7 @@ abstract class RecyclerFragment(
                 Log.e("MyHTTPErr", e.message ?: "null e.msg $e")
                 if (e is IOException)
                     noResultFoundTextView.text = getString(R.string.networkError)
+                noResultFoundTextView.setTextColor(Color.parseColor("#DD2C00"))
             }
         }
     }
@@ -130,9 +149,11 @@ abstract class RecyclerFragment(
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                val llm = recyclerView.layoutManager as LinearLayoutManager
+                val llm = if (this@RecyclerFragment is SearchFragment)
+                    recyclerView.layoutManager as GridLayoutManager
+                    else recyclerView.layoutManager as LinearLayoutManager
                 val last = llm.findLastVisibleItemPosition()
-                if (last == jsonList[i].size - 2 && hasNextPage[i]) {
+                if (last >= jsonList[i].size - 4 && hasNextPage[i]) {
                     hasNextPage[i] = false
                     manageApi(
                         noResultFoundTextView,

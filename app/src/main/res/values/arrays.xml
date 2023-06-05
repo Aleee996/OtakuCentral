@@ -1,0 +1,46 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="genres_entries">
+        <item>Action</item>
+        <item>Adventure</item>
+        <item>Comedy</item>
+        <item>Drama</item>
+        <item>Fantasy</item>
+        <item>Horror</item>
+        <item>Isekai</item>
+        <item>Mystery</item>
+        <item>Romance</item>
+        <item>Sci-Fi</item>
+        <item>Sports</item>
+    </string-array>
+
+    <string-array name="genres_values">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+        <item>10</item>
+        <item>14</item>
+        <item>62</item>
+        <item>7</item>
+        <item>22</item>
+        <item>24</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="genres_default">
+        <item>4</item>
+        <item>62</item>
+        <item>30</item>
+    </string-array>
+</resources>

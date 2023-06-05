@@ -20,6 +20,16 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             >
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_plus_small"
+                app:borderWidth="0dp"
+                app:fabSize="auto"
+                app:useCompatPadding="true" />
+
             <ImageView
                 android:id="@+id/animeImage"
                 android:layout_width="match_parent"
@@ -44,11 +54,10 @@
         android:id="@+id/resultErrEpisodes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:textSize="24sp"
-        android:autoSizeTextType="uniform"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    </TextView>
+        android:layout_marginVertical="16dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/episodesList"
@@ -56,12 +65,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="45dp"
         android:layout_marginRight="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layoutManager="LinearLayoutManager"
         tools:context=".AnimeFragment"
         tools:listitem="@layout/fragment_anime"
+        android:scrollbars="none"
         />
+
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiViewAnimeFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

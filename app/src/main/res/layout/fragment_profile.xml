@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="61dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/infoHoursWatched"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginBottom="32dp"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Text1"
+                android:textColor="?attr/colorPrimary"
+                android:theme="@style/RecyclerList"
+                app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+                app:layout_constraintEnd_toStartOf="@+id/infoEpWatched"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/infoEpWatched"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Text2"
+                android:textColor="?attr/colorPrimary"
+                android:theme="@style/RecyclerList"
+                app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+                app:layout_constraintEnd_toStartOf="@+id/infoChaptersRead"
+                app:layout_constraintStart_toEndOf="@+id/infoHoursWatched"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/infoChaptersRead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Text3"
+                android:textColor="?attr/colorPrimary"
+                android:theme="@style/RecyclerList"
+                app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/infoEpWatched"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/settingsButton"
+                app:layout_constraintBottom_toTopOf="@+id/textViewAnimeCompleted"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/infoChaptersRead" />
+
+            <TextView
+                android:id="@+id/textViewAnimeCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/completedAnime"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/AnimeCompleted"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/settingsButton" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/AnimeCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:nestedScrollingEnabled="false"
+                android:orientation="horizontal"
+                app:layoutManager="LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/textViewMangaCompleted"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAnimeCompleted" />
+
+
+            <TextView
+                android:id="@+id/textViewMangaCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/completedManga"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/MangaCompleted"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/AnimeCompleted" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/MangaCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:nestedScrollingEnabled="false"
+                android:orientation="horizontal"
+                app:layoutManager="LinearLayoutManager"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMangaCompleted" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

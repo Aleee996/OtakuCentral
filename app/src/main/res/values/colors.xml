@@ -12,6 +12,10 @@
     <color name="dark_gray">#313335</color>
     <color name="very_dark_gray">#191919</color>
     <color name="yellow">#FFD600</color>
+    <color name="lighter_yellow">#CBFFFF1E</color>
     <color name="red">#DD2C00</color>
+    <color name="light_blueish">#FF0097A7</color>
+    <color name="transparent">#00000000</color>
+
 
 </resources>

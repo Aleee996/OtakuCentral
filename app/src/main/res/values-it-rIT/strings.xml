@@ -8,5 +8,23 @@
     <string name="textResultsNotFound">Nessun risultato per %s</string>
     <string name="home">Home</string>
     <string name="networkError">Spiacenti, si è verificato un errore di rete</string>
-    <string name="noEpisodesError">Spiacenti, non sono disponibili gli episodi</string>
+    <string name="noEpisodesError">Spiacenti, info non disponibili per gli episodi</string>
+    <string name="listChapters">Capitoli</string>
+    <string name="nullChapters">Spiacenti, no info disponibili sui capitoli</string>
+    <string name="wrongChapter">Il valore inserito non è valido</string>
+    <string name="chaptersHint">Letti/Totale</string>
+    <string name="chaptersHintNoMax">Letti</string>
+    <string name="confirm_dialog_remove_from_list">Conferma</string>
+    <string name="dialog_remove_from_list">Procedere con la rimozione?\nQuesto comporta la cancellazione degli elementi correlati</string>
+    <string name="cancel_dialog_remove_from_list">Annulla</string>
+    <string name="animeWatchlist">I tuoi episodi da vedere</string>
+    <string name="mangaReadlist">I tuoi capitoli da leggere</string>
+    <string name="textGenresError">i tuoi generi</string>
+    <string name="genresSuggestion">Sulla base del tuo genere preferito: %s</string>
+    <string name="finishedElement">Congratulazioni per aver concluso %s!</string>
+    <string name="watchedEp">Altri %d rimanenti per %s!</string>
+    <string name="watchedEpNoMax">Hai completato il numero %d di %s</string>
+    <string name="emptyFollowedList">Nulla da vedere qui!\nAggiungi qualcosa in lista e inizia a divertirti!</string>
+    <string name="completedAnime">Anime completati</string>
+    <string name="completedManga">Manga completati</string>
 </resources>

@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.animeshowtime.databinding.FragmentSearchResultListBinding
 import org.json.JSONObject
-
-
-private const val ARG_SEARCH_STRING = "null"
+import java.lang.annotation.ElementType
 
 class SearchResultFragment : RecyclerFragment(
     Array(1) {"null"},
@@ -19,12 +17,16 @@ class SearchResultFragment : RecyclerFragment(
 ) {
     private lateinit var binding: FragmentSearchResultListBinding
     private var searchedElement : String = ""
+    var elementType : Int = ANIME
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
+            elementType = it.getInt(ARG_TYPE)
             searchedElement = it.getString(ARG_SEARCH_STRING).toString()
+            if (elementType == ANIME)
             searchString[0] = "https://api.jikan.moe/v4/anime?q=$searchedElement"
+            else searchString[0] = "https://api.jikan.moe/v4/manga?q=$searchedElement"
         }
     }
 
@@ -71,15 +73,17 @@ class SearchResultFragment : RecyclerFragment(
 
     companion object {
 
-        // TODO: Customize parameter argument names
-        //const val ARG_COLUMN_COUNT = "column-count"
+
+        private const val ARG_SEARCH_STRING = "searched"
+        private const val ARG_TYPE = "type"
 
         // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(arg1 : String) =
+        fun newInstance(searchedElement : String, elementType: Int) =
             SearchResultFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_SEARCH_STRING, arg1)
+                    putString(ARG_SEARCH_STRING, searchedElement)
+                    putInt(ARG_TYPE, elementType)
                 }
             }
     }

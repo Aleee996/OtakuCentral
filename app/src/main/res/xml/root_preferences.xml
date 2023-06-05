@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/animeSettings">
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/genres_default"
+            android:entries="@array/genres_entries"
+            android:entryValues="@array/genres_values"
+            android:key="genresAnime"
+            android:title="@string/genresAnime" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/mangaSettings">
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/genres_default"
+            android:entries="@array/genres_entries"
+            android:entryValues="@array/genres_values"
+            android:key="genresManga"
+            android:title="@string/genresManga" />
+
+        <SwitchPreferenceCompat
+            app:key="volumesVSchapters"
+            app:summaryOff="@string/volumesVSchaptersOFF"
+            app:summaryOn="@string/volumesVSchaptersON"
+            app:title="@string/volumesVSchapters" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

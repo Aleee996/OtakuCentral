@@ -5,7 +5,9 @@
     android:theme="@style/RecyclerList"
     android:elevation="8dp"
     android:layout_marginVertical="2dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:scrollbars="none"
+    >
 
     <TextView
         android:id="@+id/listEpId"
@@ -13,10 +15,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:paddingLeft="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="0dp"
         android:gravity="start"
         android:layout_gravity="center"
         android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="10dp"
         android:layout_weight="0.3"
         android:textAppearance="?attr/textAppearanceListItem" />
 
@@ -42,6 +47,7 @@
         android:maxLines="1"
         android:layout_weight="1"
         android:textSize="11sp"
+        android:autoSizeTextType="uniform"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <CheckBox
@@ -52,5 +58,12 @@
         android:gravity="center_vertical"
         android:layout_weight="0.5">
     </CheckBox>
+
+
+    <!--<TextView
+        android:id="@+id/listId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible" /> -->
 
 </LinearLayout>

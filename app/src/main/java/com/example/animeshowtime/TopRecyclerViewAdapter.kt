@@ -1,9 +1,15 @@
 package com.example.animeshowtime
 
+import android.app.ActionBar.LayoutParams
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.view.marginTop
+import androidx.core.view.setMargins
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -36,7 +42,9 @@ class TopRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        val url = item.getJSONObject("images").getJSONObject("jpg").getString("image_url")
+        val url = if (parentFragment is ProfileFragment)
+            item.getString("img")
+        else item.getJSONObject("images").getJSONObject("jpg").getString("large_image_url")
         //
         Glide.with(holder.itemImage.context)
             .load(url)
@@ -51,7 +59,8 @@ class TopRecyclerViewAdapter(
 
     override fun onViewRecycled(holder: TopRecyclerViewAdapter.ViewHolder) {
         super.onViewRecycled(holder)
-        //recycle imageview TODO check fragment as context
+        //recycle imageview
+        //TODO check if cause of fast scroll back
         holder.itemImage.layout(0,0,0,0)
         Glide.with(holder.itemImage.context)
             .clear(holder.itemImage)
@@ -62,19 +71,41 @@ class TopRecyclerViewAdapter(
         val itemId = binding.listIdTop
 
         init {
+
+            if (parentFragment is SearchFragment) {
+                var dens = 0F
+                val scaling : Float = if (parentFragment.resources.displayMetrics.run { dens = density
+                        heightPixels/density } > 450) 4F else 2.7F
+                binding.linearLayoutTop.layoutParams?.height = (parentFragment.resources.displayMetrics.heightPixels/scaling).toInt()
+                binding.linearLayoutTop.layoutParams?.width = (parentFragment.resources.displayMetrics.widthPixels/3.5F).toInt()
+                //TODO margins togethaaa
+                (binding.linearLayoutTop.layoutParams as ViewGroup.MarginLayoutParams).setMargins((dens *3).toInt())
+                binding.listImgTop.scaleType = ImageView.ScaleType.CENTER_CROP
+                binding.listImgTop.layoutParams?.width = LayoutParams.MATCH_PARENT
+            }
+
             binding.root.setOnClickListener {
-                if (binding.root.parent is RecyclerView && (binding.root.parent as RecyclerView).id==R.id.topTvAnime ) {
-                    parentFragment.activity?.supportFragmentManager?.commit {
-                        setReorderingAllowed(true)
-                        addToBackStack("topIntoAnime")
-                        replace(
-                            R.id.fragment_container,
-                            AnimeFragment.newInstance(itemId.text.toString().toIntOrNull() ?: 0)
-                        )
-                    }
+
+                val elementType =
+                    //if anime recycler
+                    if (binding.root.parent is RecyclerView && (binding.root.parent as RecyclerView).id==R.id.topTvAnime) {
+                    ANIME
                 }
+                else if(parentFragment is SearchFragment)
+                parentFragment.elementType
+                //else manga recycler
                 else {
-                    Toast.makeText(parentFragment.activity, "WIP manga page", Toast.LENGTH_SHORT).show()
+                    MANGA
+                }
+
+                parentFragment.activity?.supportFragmentManager?.commit {
+                    setReorderingAllowed(true)
+                    addToBackStack("topIntoAnime")
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    replace(
+                        R.id.fragment_container,
+                        AnimeFragment.newInstance(itemId.text.toString().toIntOrNull() ?: 0, elementType)
+                    )
                 }
             }
         }
