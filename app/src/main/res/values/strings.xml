@@ -50,8 +50,17 @@
     <string name="volumesVSchaptersON">Tracking manga data as volumes</string>
     <string name="volumesVSchaptersOFF">Tracking manga data as chapters</string>
     <string name="animeSettings">Anime Settings</string>
-    <string name="hoursWatched">TOTAL VIEW TIME\n%s</string>
-    <string name="episodesWatched">TOTAL EPISODES WATCHED\n%d</string>
-    <string name="chaptersRead">TOTAL CHAPTERS READ\n%d</string>
+    <string name="hoursWatched">TOTAL VIEW TIME</string>
+    <string name="episodesWatched">TOTAL EPISODES WATCHED</string>
+    <string name="chaptersRead">TOTAL CHAPTERS READ</string>
+    <string name="channel_name">OtakuCentral Notification Channel</string>
+    <string name="channel_description">OtakuCentral news notifications</string>
+    <string name="notificationSettings">Notification settings</string>
+    <string name="notificationSwitch">Get notifications about news and reminders</string>
+    <string name="notificationOFF">You are not getting periodic notifications</string>
+    <string name="notifcationON">You are getting periodic notifications</string>
+    <string name="notificationTitle">OtakuCentral</string>
+    <string name="notifcationContent">Check out the new and trending shows and manga</string>
+    <string name="notificationInterval">Define how often you would like to be notified</string>
 
 </resources>

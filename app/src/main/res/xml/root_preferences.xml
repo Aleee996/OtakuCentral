@@ -4,28 +4,47 @@
     <PreferenceCategory app:title="@string/animeSettings">
 
         <MultiSelectListPreference
-            android:defaultValue="@array/genres_default"
-            android:entries="@array/genres_entries"
-            android:entryValues="@array/genres_values"
-            android:key="genresAnime"
-            android:title="@string/genresAnime" />
+            app:defaultValue="@array/genres_default"
+            app:entries="@array/genres_entries"
+            app:entryValues="@array/genres_values"
+            app:key="genresAnime"
+            app:title="@string/genresAnime" />
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/mangaSettings">
 
         <MultiSelectListPreference
-            android:defaultValue="@array/genres_default"
-            android:entries="@array/genres_entries"
-            android:entryValues="@array/genres_values"
-            android:key="genresManga"
-            android:title="@string/genresManga" />
+            app:defaultValue="@array/genres_default"
+            app:entries="@array/genres_entries"
+            app:entryValues="@array/genres_values"
+            app:key="genresManga"
+            app:title="@string/genresManga" />
 
         <SwitchPreferenceCompat
             app:key="volumesVSchapters"
             app:summaryOff="@string/volumesVSchaptersOFF"
             app:summaryOn="@string/volumesVSchaptersON"
             app:title="@string/volumesVSchapters" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/notificationSettings">
+
+        <SwitchPreferenceCompat
+            app:key="notificationOn"
+            app:defaultValue="true"
+            app:summaryOff="@string/notificationOFF"
+            app:summaryOn="@string/notifcationON"
+            app:title="@string/notificationSwitch" />
+
+        <ListPreference
+            app:key="notificationInterval"
+            app:dependency="notificationOn"
+            app:defaultValue="24h"
+            app:entries="@array/notification_interval_entries"
+            app:entryValues="@array/notification_interval_values"
+            app:title="@string/notificationInterval" />
 
     </PreferenceCategory>
 

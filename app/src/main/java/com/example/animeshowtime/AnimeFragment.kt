@@ -287,7 +287,7 @@ class AnimeFragment : ConfirmDialogFragment.NoticeDialogListener, RecyclerFragme
     }
 
     fun showKonfetti(last: Int) {
-        if (last == tot) {
+        if (inList && last!= 0 && last == tot) {
             binding.konfettiViewAnimeFrag.start(
                 Party(
                     speed = 0f,
@@ -305,10 +305,10 @@ class AnimeFragment : ConfirmDialogFragment.NoticeDialogListener, RecyclerFragme
                 Snackbar.LENGTH_SHORT
             ).show()
         }
-        else if (inList) {
+        else if (inList && last != tot) {
             Snackbar.make(
                 this.requireView(),
-                if (tot.toString() == "null")
+                if (tot.toString() == "null" || tot < last)
                     getString(R.string.watchedEpNoMax, last, elementData.getString("title"))
                 else getString(R.string.watchedEp, tot - last, elementData.getString("title")),
                 Snackbar.LENGTH_SHORT

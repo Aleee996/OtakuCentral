@@ -28,6 +28,14 @@
     <style name="RecyclerList" parent="Theme.AnimeShowTime">
         <item name="android:background">@drawable/recycler_list_day</item>
     </style>
+    <style name="ProfileInfo" parent="RecyclerList">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMaxTextSize">20sp</item>
+    </style>
+
 
     <style name="TogglingButtons" parent="Widget.Material3.Button">
         <item name="colorPrimary">@color/transparent</item>

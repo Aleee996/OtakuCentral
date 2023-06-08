@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.SearchView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.MenuProvider
@@ -27,6 +28,7 @@ import com.example.animeshowtime.databinding.FragmentSearchBinding
 import com.example.animeshowtime.placeholder.PlaceholderContent
 import com.google.android.material.color.MaterialColors
 import org.json.JSONObject
+import java.lang.Exception
 import kotlin.random.Random
 
 
@@ -64,6 +66,25 @@ class SearchFragment : RecyclerFragment(
         } ?: run {
             animeGenres.addAll(resources.getStringArray(R.array.genres_default))
         }
+
+        val callback = object : OnBackPressedCallback(
+            true // default to enabled
+        ) {
+            override fun handleOnBackPressed() {
+                try {
+                    activity?.supportFragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                    activity?.supportFragmentManager?.commit {
+                        setReorderingAllowed(true)
+                        replace(R.id.fragment_container, TopFragment())
+                    }
+                    menu.findItem(R.id.menuSearch).collapseActionView()
+                } catch (e: Exception) {Log.e("mytagFragManager", e.message ?: e.toString())}
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this, // LifecycleOwner
+            callback
+        )
     }
 
     override fun onCreateView(

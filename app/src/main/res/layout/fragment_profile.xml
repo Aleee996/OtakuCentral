@@ -9,63 +9,132 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="61dp">
+        android:layout_height="match_parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/infoHoursWatched"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginBottom="32dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:elevation="10dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Text1"
-                android:textColor="?attr/colorPrimary"
-                android:theme="@style/RecyclerList"
+                android:paddingBottom="3dp"
+                android:theme="@style/ProfileInfo"
                 app:layout_constraintBottom_toTopOf="@+id/settingsButton"
                 app:layout_constraintEnd_toStartOf="@+id/infoEpWatched"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+                <TextView
+                    android:id="@+id/textHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="@string/hoursWatched"
+                    app:layout_constraintBottom_toTopOf="@+id/hoursWatched"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/hoursWatched"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textHours" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/infoEpWatched"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:elevation="10dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Text2"
-                android:textColor="?attr/colorPrimary"
-                android:theme="@style/RecyclerList"
+                android:paddingBottom="3dp"
+                android:theme="@style/ProfileInfo"
                 app:layout_constraintBottom_toTopOf="@+id/settingsButton"
                 app:layout_constraintEnd_toStartOf="@+id/infoChaptersRead"
                 app:layout_constraintStart_toEndOf="@+id/infoHoursWatched"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+                <TextView
+                    android:id="@+id/textEpisodesWatched"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/episodesWatched"
+                    app:layout_constraintBottom_toTopOf="@+id/episodesWatched"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/episodesWatched"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textEpisodesWatched" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/infoChaptersRead"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:elevation="10dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Text3"
-                android:textColor="?attr/colorPrimary"
-                android:theme="@style/RecyclerList"
+                android:paddingBottom="3dp"
+                android:theme="@style/ProfileInfo"
                 app:layout_constraintBottom_toTopOf="@+id/settingsButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/infoEpWatched"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textChaptersRead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/chaptersRead"
+                    app:layout_constraintBottom_toTopOf="@+id/chaptersRead"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/chaptersRead"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textChaptersRead" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <Button
                 android:id="@+id/settingsButton"
@@ -96,7 +165,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/AnimeCompleted"
                 android:layout_width="wrap_content"
-                android:layout_height="300dp"
+                android:layout_height="200dp"
                 android:nestedScrollingEnabled="false"
                 android:orientation="horizontal"
                 app:layoutManager="LinearLayoutManager"
@@ -121,7 +190,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/MangaCompleted"
                 android:layout_width="wrap_content"
-                android:layout_height="300dp"
+                android:layout_height="200dp"
                 android:nestedScrollingEnabled="false"
                 android:orientation="horizontal"
                 app:layoutManager="LinearLayoutManager"

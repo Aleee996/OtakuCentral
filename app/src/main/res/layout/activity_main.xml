@@ -57,7 +57,7 @@
             android:paddingBottom="12dp"
             app:backgroundTint="@color/black"
             app:cornerRadius="0dip"
-            app:icon="@drawable/ic_anime"
+            app:icon="@drawable/ic_watching_tv"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconTint="@color/white"

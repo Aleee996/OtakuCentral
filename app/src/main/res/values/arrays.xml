@@ -43,4 +43,19 @@
         <item>62</item>
         <item>30</item>
     </string-array>
+
+    <string-array name="notification_interval_entries">
+        <item>Twice a day</item>
+        <item>Once a day</item>
+        <item>Every three days</item>
+        <item>Once a week</item>
+        <item>Every 20 minutes (Experimental!)</item>
+    </string-array>
+    <string-array name="notification_interval_values">
+        <item>12h</item>
+        <item>24h</item>
+        <item>72h</item>
+        <item>7d</item>
+        <item>20m</item>
+    </string-array>
 </resources>

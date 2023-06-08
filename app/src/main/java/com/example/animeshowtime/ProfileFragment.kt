@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import androidx.activity.OnBackPressedCallback
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
@@ -102,8 +103,8 @@ class ProfileFragment : Fragment() {
                     else {
                         binding.AnimeCompleted.adapter = TopRecyclerViewAdapter(jsonListAnime, this@ProfileFragment)
                     }
-                    binding.infoHoursWatched.text = getString(R.string.hoursWatched, Duration.parse(viewMinutes.toString()+"m").toString())
-                    binding.infoEpWatched.text = getString(R.string.episodesWatched, totEpisodes)
+                    binding.hoursWatched.text = Duration.parse(viewMinutes.toString()+"m").toString()
+                    binding.episodesWatched.text = totEpisodes.toString()
                 }
             } catch (e: Exception) {
                 Log.e("mytagFollowedList", e.message ?: e.toString())
@@ -128,7 +129,7 @@ class ProfileFragment : Fragment() {
                     else {
                         binding.MangaCompleted.adapter = TopRecyclerViewAdapter(jsonListManga, this@ProfileFragment)
                     }
-                    binding.infoChaptersRead.text = getString(R.string.chaptersRead, totChapters)
+                    binding.chaptersRead.text = totChapters.toString()
                 }
             } catch (e: Exception) {
                 Log.e("mytagFollowedList", e.message ?: e.toString())
