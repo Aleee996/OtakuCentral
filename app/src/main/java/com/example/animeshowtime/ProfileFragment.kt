@@ -52,7 +52,7 @@ class ProfileFragment : Fragment() {
                         replace(R.id.fragment_container, TopFragment())
                     }
                     menu.findItem(R.id.menuSearch).collapseActionView()
-                } catch (e: Exception) {Log.e("mytagFragManager", e.message ?: e.toString())}
+                } catch (e: Exception) {/*Log.e("mytagFragManager", e.message ?: e.toString())*/}
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(
@@ -101,13 +101,13 @@ class ProfileFragment : Fragment() {
                     if (jsonListAnime.isEmpty())
                         binding.textViewAnimeCompleted.text = getString(R.string.emptyFollowedList)
                     else {
-                        binding.AnimeCompleted.adapter = TopRecyclerViewAdapter(jsonListAnime, this@ProfileFragment)
+                        binding.animeCompleted.adapter = TopRecyclerViewAdapter(jsonListAnime, this@ProfileFragment)
                     }
                     binding.hoursWatched.text = Duration.parse(viewMinutes.toString()+"m").toString()
                     binding.episodesWatched.text = totEpisodes.toString()
                 }
             } catch (e: Exception) {
-                Log.e("mytagFollowedList", e.message ?: e.toString())
+                //Log.e("mytagFollowedList", e.message ?: e.toString())
             }
         }
 
@@ -127,12 +127,12 @@ class ProfileFragment : Fragment() {
                     if (jsonListManga.isEmpty())
                         binding.textViewMangaCompleted.text = getString(R.string.emptyFollowedList)
                     else {
-                        binding.MangaCompleted.adapter = TopRecyclerViewAdapter(jsonListManga, this@ProfileFragment)
+                        binding.mangaCompleted.adapter = TopRecyclerViewAdapter(jsonListManga, this@ProfileFragment)
                     }
                     binding.chaptersRead.text = totChapters.toString()
                 }
             } catch (e: Exception) {
-                Log.e("mytagFollowedList", e.message ?: e.toString())
+                //Log.e("mytagFollowedList", e.message ?: e.toString())
             }
         }
 

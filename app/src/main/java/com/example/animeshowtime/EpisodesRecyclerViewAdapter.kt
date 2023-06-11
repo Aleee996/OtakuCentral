@@ -77,7 +77,7 @@ class EpisodesRecyclerViewAdapter(
                     holder.itemSynopsis.text = item.getString("synopsis")
                 }catch (e : Exception) {
                     holder.itemSynopsis.text=""
-                    Log.e("mytagSynopsis", e.message ?: e.toString())
+                    //Log.e("mytagSynopsis", e.message ?: e.toString())
                 }
             }
 
@@ -91,7 +91,7 @@ class EpisodesRecyclerViewAdapter(
                     val initDate = SimpleDateFormat("yyyy-MM-dd").parse(item.getString("aired").split('T')[0])
                     holder.itemEpDate.text = initDate?.let { dateFormat.format(it) }
                 } catch (e : Exception) {
-                    Log.e("mytagEpisodes", e.message ?: e.toString())
+                    //Log.e("mytagEpisodes", e.message ?: e.toString())
                 }
             }
 

@@ -4,9 +4,6 @@ import android.app.ActionBar.LayoutParams
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.core.view.marginTop
 import androidx.core.view.setMargins
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -78,17 +75,32 @@ class TopRecyclerViewAdapter(
                         heightPixels/density } > 450) 4F else 2.7F
                 binding.linearLayoutTop.layoutParams?.height = (parentFragment.resources.displayMetrics.heightPixels/scaling).toInt()
                 binding.linearLayoutTop.layoutParams?.width = (parentFragment.resources.displayMetrics.widthPixels/3.5F).toInt()
-                //TODO margins togethaaa
                 (binding.linearLayoutTop.layoutParams as ViewGroup.MarginLayoutParams).setMargins((dens *3).toInt())
                 binding.listImgTop.scaleType = ImageView.ScaleType.CENTER_CROP
                 binding.listImgTop.layoutParams?.width = LayoutParams.MATCH_PARENT
+            }
+            else if (parentFragment is TopFragment){
+                parentFragment.resources.displayMetrics.run {
+                    binding.linearLayoutTop.layoutParams?.width = (widthPixels/3.3).toInt()
+                    binding.listImgTop.scaleType= ImageView.ScaleType.FIT_XY
+                    binding.listImgTop.layoutParams?.width = LayoutParams.MATCH_PARENT
+                }
+
+            }
+            else if (parentFragment is ProfileFragment) {
+                parentFragment.resources.displayMetrics.run {
+                    binding.linearLayoutTop.layoutParams?.width = (widthPixels/3.8).toInt()
+                    binding.listImgTop.scaleType= ImageView.ScaleType.FIT_XY
+                    binding.listImgTop.layoutParams?.width = LayoutParams.MATCH_PARENT
+                }
             }
 
             binding.root.setOnClickListener {
 
                 val elementType =
                     //if anime recycler
-                    if (binding.root.parent is RecyclerView && (binding.root.parent as RecyclerView).id==R.id.topTvAnime) {
+                    if (binding.root.parent is RecyclerView && (binding.root.parent as RecyclerView).id == R.id.topTvAnime ||
+                        (binding.root.parent as RecyclerView).id == R.id.animeCompleted) {
                     ANIME
                 }
                 else if(parentFragment is SearchFragment)

@@ -1,25 +1,11 @@
 package com.example.animeshowtime
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import com.example.animeshowtime.databinding.FragmentTopListBinding
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.ensureActive
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONArray
 import org.json.JSONObject
-import java.io.BufferedInputStream
-import java.net.HttpURLConnection
-import java.net.URL
-import kotlin.coroutines.coroutineContext
 
 //private const val ARG_ANIME_ID = "param1"
 
@@ -34,7 +20,7 @@ class TopFragment : RecyclerFragment(
     private var rowCount = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        searchString[ANIME] = "https://api.jikan.moe/v4/top/anime?type=tv,movie"
+        searchString[ANIME] = "https://api.jikan.moe/v4/top/anime?page=1"
         searchString[MANGA] = "https://api.jikan.moe/v4/top/manga?page=1"
         arguments?.let {
             rowCount = it.getInt(ARG_ROW_COUNT)
@@ -54,10 +40,12 @@ class TopFragment : RecyclerFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val scaling : Float = if (resources.displayMetrics.run { heightPixels/density } > 450) 4F else 2.7F
+        /*val scaling : Float = if (resources.displayMetrics.run { heightPixels/density } > 450) 4F else 2.7F
         binding.topTvAnime.layoutParams.height = (resources.displayMetrics.heightPixels/scaling).toInt()
-        binding.topTvAnime.adapter = TopRecyclerViewAdapter(jsonList[ANIME], this)
         binding.topManga.layoutParams.height = (resources.displayMetrics.heightPixels/scaling).toInt()
+        */
+
+        binding.topTvAnime.adapter = TopRecyclerViewAdapter(jsonList[ANIME], this)
         binding.topManga.adapter = TopRecyclerViewAdapter(jsonList[MANGA], this)
 
         //async coroutine to retrieve data from the jikan API
@@ -79,6 +67,11 @@ class TopFragment : RecyclerFragment(
         addOnRecyclerScrolled(binding.textViewTopTvAnime, "Anime", ANIME, binding.topTvAnime)
         addOnRecyclerScrolled(binding.textViewTopManga, "Manga", MANGA, binding.topManga)
 
+    }
+
+    fun scrollToTop() {
+        binding.topTvAnime.scrollToPosition(0)
+        binding.topManga.scrollToPosition(0)
     }
 
     companion object {

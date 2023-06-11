@@ -1,5 +1,4 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="@string/animeSettings">
 
@@ -21,11 +20,11 @@
             app:key="genresManga"
             app:title="@string/genresManga" />
 
-        <SwitchPreferenceCompat
+        <!--<SwitchPreferenceCompat
             app:key="volumesVSchapters"
             app:summaryOff="@string/volumesVSchaptersOFF"
             app:summaryOn="@string/volumesVSchaptersON"
-            app:title="@string/volumesVSchapters" />
+            app:title="@string/volumesVSchapters" />-->
 
     </PreferenceCategory>
 
@@ -36,7 +35,9 @@
             app:defaultValue="true"
             app:summaryOff="@string/notificationOFF"
             app:summaryOn="@string/notifcationON"
-            app:title="@string/notificationSwitch" />
+            app:title="@string/notificationSwitch"
+            app:singleLineTitle="false"
+            />
 
         <ListPreference
             app:key="notificationInterval"
@@ -44,7 +45,9 @@
             app:defaultValue="24h"
             app:entries="@array/notification_interval_entries"
             app:entryValues="@array/notification_interval_values"
-            app:title="@string/notificationInterval" />
+            app:title="@string/notificationInterval"
+            app:singleLineTitle="false"
+            />
 
     </PreferenceCategory>
 

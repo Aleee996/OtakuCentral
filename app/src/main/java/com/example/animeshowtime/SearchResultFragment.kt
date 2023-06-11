@@ -45,7 +45,7 @@ class SearchResultFragment : RecyclerFragment(
         //binding the empty adapter
         binding.list.adapter = SearchResultRecyclerViewAdapter(jsonList[0], this)
 
-        Log.i("mytagArg", searchedElement)
+        //Log.i("mytagArg", searchedElement)
         if (searchedElement != "")
             binding.textResultsFound.text = getString(R.string.textResultsFound, searchedElement)
 

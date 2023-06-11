@@ -70,7 +70,9 @@ class SearchResultRecyclerViewAdapter(
                 item.getString("type")
             else holder.next.toString()
             holder.itemId.text = item.getString("mal_id")
-        } catch (e: Exception) {Log.e("mytagFragManager", e.message ?: e.toString())}
+        } catch (e: Exception) {
+            //Log.e("mytagFragManager", e.message ?: e.toString())
+        }
     }
 
     override fun getItemCount(): Int = values.size
@@ -109,7 +111,7 @@ class SearchResultRecyclerViewAdapter(
             }
 
             binding.root.setOnClickListener {
-                Log.i("myTagSearch", itemTitle.text.toString() + " " + itemId.text.toString())
+                //Log.i("myTagSearch", itemTitle.text.toString() + " " + itemId.text.toString())
                 parentFragment.activity?.supportFragmentManager?.commit {
                     setReorderingAllowed(true)
                     addToBackStack(null)

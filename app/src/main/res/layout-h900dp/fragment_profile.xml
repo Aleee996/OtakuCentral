@@ -129,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:padding="4dp"
+        android:padding="12dp"
         android:text="@string/settingsButton"
         app:icon="@drawable/ic_settings"
         app:iconGravity="textEnd"
@@ -146,7 +146,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"
         android:text="@string/completedAnime"
-        android:textSize="24sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/animeCompleted"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,30 +154,29 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/animeCompleted"
-    android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    android:layout_marginBottom="16dp"
-    android:nestedScrollingEnabled="false"
-    android:orientation="horizontal"
-    app:layoutManager="LinearLayoutManager"
-    app:layout_constraintBottom_toTopOf="@+id/textViewMangaCompleted"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textViewAnimeCompleted" />
+        android:id="@+id/animeCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:nestedScrollingEnabled="false"
+        android:orientation="horizontal"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/textViewMangaCompleted"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAnimeCompleted" />
 
 
     <TextView
-    android:id="@+id/textViewMangaCompleted"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:text="@string/completedManga"
-    android:textSize="24sp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toTopOf="@+id/mangaCompleted"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/animeCompleted" />
+        android:id="@+id/textViewMangaCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/completedManga"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/mangaCompleted"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animeCompleted" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mangaCompleted"

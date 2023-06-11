@@ -27,4 +27,22 @@
     <string name="emptyFollowedList">Nulla da vedere qui!\nAggiungi qualcosa in lista e inizia a divertirti!</string>
     <string name="completedAnime">Anime completati</string>
     <string name="completedManga">Manga completati</string>
+    <string name="settingsButton">Impostazioni</string>
+    <string name="genres">"Generi: "</string>
+    <string name="genresAnime">Scegli i tuoi generi anime preferiti</string>
+    <string name="genresManga">Scegli i tuoi generi manga preferiti</string>
+    <string name="mangaSettings">Impostazioni Manga</string>
+    <string name="animeSettings">Impostazioni Anime</string>
+    <string name="hoursWatched">ORE DI VISIONE</string>
+    <string name="episodesWatched">EPISODI GUARDATI</string>
+    <string name="chaptersRead">CAPITOLI LETTI</string>
+    <string name="channel_description">OtakuCentral notifiche novità</string>
+    <string name="notificationSettings">Impostazioni notifiche</string>
+    <string name="notificationSwitch">Ricevi notifiche su novità</string>
+    <string name="notificationInterval">Scegli ogni quanto ricevere notifiche</string>
+    <string name="notificationOFF">Non riceverai notifiche periodiche</string>
+    <string name="notifcationON">Riceverai notifiche periodiche</string>
+    <string name="notificationTitle">OtakuCentral</string>
+    <string name="notifcationContent">Controlla novità e trend su anime e manga</string>
+
 </resources>

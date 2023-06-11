@@ -11,13 +11,11 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
@@ -29,28 +27,16 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
-import androidx.lifecycle.Observer
 import androidx.preference.PreferenceManager
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.OutOfQuotaPolicy
-import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import androidx.work.WorkRequest
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.example.animeshowtime.databinding.ActivityMainBinding
-import org.json.JSONObject
-import java.io.BufferedInputStream
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
-import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 
@@ -76,6 +62,7 @@ class MainActivity : AppCompatActivity() {
             chaptersDataStore.edit { it.clear() }
         }*/
 
+
         createNotificationChannel()
         var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         sharedPreferences?.getBoolean("notificationOn", true).let {
@@ -85,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                         notificationInterval = string
                     }
                 }
-                createNotificationWorker(kotlin.time.Duration.parse(notificationInterval))
+                createNotificationWorker(kotlin.time.Duration.parse(notificationInterval), ExistingPeriodicWorkPolicy.KEEP)
             }
         }
 
@@ -104,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
             //set menu
             setMenuProvider()
-        } catch (e : Exception) {Log.e("mytagerr", e.message ?: e.toString())}
+        } catch (e : Exception) {/*Log.e("mytagerr", e.message ?: e.toString())*/}
     }
 
 
@@ -113,13 +100,17 @@ class MainActivity : AppCompatActivity() {
 
         //Homepage
         binding.homeButton.setOnClickListener {
-            if (supportFragmentManager.findFragmentById(R.id.fragment_container) !is TopFragment) {
+            val frag = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            if (frag !is TopFragment) {
                 supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
                     replace(R.id.fragment_container, TopFragment())
 
                 }
+            }
+            else {
+                frag.scrollToTop()
             }
             menu.findItem(R.id.menuSearch).collapseActionView()
         }
@@ -204,7 +195,7 @@ class MainActivity : AppCompatActivity() {
                                 addToBackStack("search")
                                 replace(R.id.fragment_container, SearchFragment())
                             }
-                        } catch (e: Exception) {Log.e("mytagFragManager", e.message ?: e.toString())}
+                        } catch (e: Exception) {/*Log.e("mytagFragManager", e.message ?: e.toString())*/}
                         return true
                     }
 
@@ -242,10 +233,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun createNotificationWorker(interval: kotlin.time.Duration) {
+    fun createNotificationWorker(interval: kotlin.time.Duration, existingWorkingPolicy: ExistingPeriodicWorkPolicy) {
 
         val notificationRequest =
             PeriodicWorkRequestBuilder<NotificationWorker>(interval.inWholeMinutes, TimeUnit.MINUTES)
+                .setInitialDelay(interval.inWholeMinutes, TimeUnit.MINUTES)
                 .setConstraints(
                     Constraints.Builder()
                         .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -260,7 +252,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("worker","workInfo != null: " + value.state.toString())
             }*/
 
-        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork("notify", ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE, notificationRequest)
+        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork("notify", existingWorkingPolicy, notificationRequest)
 
     }
 
@@ -329,17 +321,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        Log.d("MystatusTag", "act on pause")
+        //Log.d("MystatusTag", "act on pause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("MystatusTag", "act on stop")
+        //Log.d("MystatusTag", "act on stop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("MystatusTag", "act on destroy")
+        //Log.d("MystatusTag", "act on destroy")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -357,48 +349,6 @@ class MainActivity : AppCompatActivity() {
                 turnOffScrollBars(child)
             }
     }*/
-
-
-    /*class NotificationWorker(appContext: Context, workerParams: WorkerParameters):
-        Worker(appContext, workerParams) {
-
-        override fun doWork(): Result {
-
-            Toast.makeText(applicationContext, "Worker on", Toast.LENGTH_LONG).show()
-            val builder = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_image)
-                .setContentTitle("textTitle")
-                .setContentText("textContent $notificationId")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true)
-
-            with(NotificationManagerCompat.from(applicationContext)) {
-                // notificationId is a unique int for each notification that you must define
-                if (ActivityCompat.checkSelfPermission(
-                        applicationContext,
-                        Manifest.permission.POST_NOTIFICATIONS
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    //return Result.failure()
-                }
-                notify(notificationId, builder.build())
-            }
-
-            notificationId++
-            // Indicate whether the work finished successfully with the Result
-            return Result.success()
-        }
-    }*/
-
-
-
 }
 
 

@@ -67,7 +67,7 @@ abstract class RecyclerFragment(
                                 !it.getBoolean("approved")
                     }
                 } catch (e: Exception) {
-                    Log.d("mytagJsonRemoveif", e.message ?: e.toString())
+                    //Log.d("mytagJsonRemoveif", e.message ?: e.toString())
                 }
 
                 //if empty la ricerca non ha prodotto risultato
@@ -89,7 +89,7 @@ abstract class RecyclerFragment(
                     nScrolls[i]++
                 }
             } catch (e: Exception) {
-                Log.e("MyHTTPErr", e.message ?: "null e.msg $e")
+                //Log.e("MyHTTPErr", e.message ?: "null e.msg $e")
                 if (e is IOException)
                     noResultFoundTextView.text = getString(R.string.networkError)
                 noResultFoundTextView.setTextColor(Color.parseColor("#DD2C00"))
@@ -111,10 +111,10 @@ abstract class RecyclerFragment(
             //JSONize the data
             val inputStream = BufferedInputStream(connection.inputStream)
             val response = inputStream.bufferedReader().use { it.readText() }
-            Log.v("mytagHttpReq", response)
+            //Log.v("mytagHttpReq", response)
             return JSONObject(response)
         } catch (e: Exception) {
-            Log.e("MytagHTTPErr", e.message ?: "null e.msg $e")
+            //Log.e("MytagHTTPErr", e.message ?: "null e.msg $e")
             if (e is IOException)
                 throw e
         }
@@ -132,7 +132,7 @@ abstract class RecyclerFragment(
                 tempJsonList.add(animeList.getJSONObject(i))
             return response.getJSONObject("pagination").getBoolean("has_next_page")
         } catch (e: Throwable) {
-            Log.e("myDeferredErr", e.message ?: "null e msg")
+            //Log.e("myDeferredErr", e.message ?: "null e msg")
             if (e is IOException)
                 throw e
         }

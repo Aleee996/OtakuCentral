@@ -49,7 +49,7 @@ class FollowedFragment : Fragment() {
                                 replace(R.id.fragment_container, TopFragment())
                             }
                         menu.findItem(R.id.menuSearch).collapseActionView()
-                        } catch (e: Exception) {Log.e("mytagFragManager", e.message ?: e.toString())}
+                        } catch (e: Exception) {/*Log.e("mytagFragManager", e.message ?: e.toString())*/}
                     }
                 }
                 requireActivity().onBackPressedDispatcher.addCallback(
@@ -98,7 +98,7 @@ class FollowedFragment : Fragment() {
                     binding.list.adapter = SearchResultRecyclerViewAdapter(jsonList, this@FollowedFragment)
                 }
             } catch (e: Exception) {
-                Log.e("mytagFollowedList", e.message ?: e.toString())
+                //Log.e("mytagFollowedList", e.message ?: e.toString())
             }
         }
     }

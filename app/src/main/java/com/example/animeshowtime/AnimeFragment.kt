@@ -203,7 +203,7 @@ class AnimeFragment : ConfirmDialogFragment.NoticeDialogListener, RecyclerFragme
         try {
             val imgURL = anime.getJSONObject("images").getJSONObject("jpg")
             val title = anime.getString("title")+ "     [${anime.getString("status")}]"
-            var genres = "Genres: "
+            var genres = getString(R.string.genres)
             for( j in 0 until anime.getJSONArray("genres").length())
                 genres += ", " + anime.getJSONArray("genres").getJSONObject(j).getString("name")
 
@@ -220,7 +220,7 @@ class AnimeFragment : ConfirmDialogFragment.NoticeDialogListener, RecyclerFragme
 
             //TODO sinossi tagliata con MOSTRA AlTRO
 
-        } catch (e : Throwable) { Log.e("myDeferredErr", e.message ?: "null e msg") }
+        } catch (e : Throwable) { /*Log.e("myDeferredErr", e.message ?: "null e msg")*/ }
     }
 
 
@@ -273,7 +273,7 @@ class AnimeFragment : ConfirmDialogFragment.NoticeDialogListener, RecyclerFragme
             jsonDataStore.put("duration", duration)
         }
 
-        Log.d("mytagSavedLast", last.toString())
+        //Log.d("mytagSavedLast", last.toString())
         if (elementType == ANIME) {
             activity?.episodesDataStore?.edit { pref ->
                 pref[stringPreferencesKey(elementId.toString())] = jsonDataStore.toString()

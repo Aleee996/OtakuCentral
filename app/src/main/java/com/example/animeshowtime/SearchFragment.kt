@@ -3,7 +3,6 @@ package com.example.animeshowtime
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -11,24 +10,18 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.MenuProvider
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.animeshowtime.databinding.FragmentSearchBinding
-import com.example.animeshowtime.placeholder.PlaceholderContent
 import com.google.android.material.color.MaterialColors
 import org.json.JSONObject
-import java.lang.Exception
 import kotlin.random.Random
 
 
@@ -78,7 +71,7 @@ class SearchFragment : RecyclerFragment(
                         replace(R.id.fragment_container, TopFragment())
                     }
                     menu.findItem(R.id.menuSearch).collapseActionView()
-                } catch (e: Exception) {Log.e("mytagFragManager", e.message ?: e.toString())}
+                } catch (e: Exception) {/*Log.e("mytagFragManager", e.message ?: e.toString())*/}
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(
@@ -150,6 +143,7 @@ class SearchFragment : RecyclerFragment(
                         val genresValues = resources.getStringArray(R.array.genres_values)
                         genreName = resources.getStringArray(R.array.genres_entries)[genresValues.indexOf(animeGenres[rand])]
                         binding.textExplore.text = getString(R.string.genresSuggestion, genreName)
+                        binding.textExplore.setTextColor(defaultTextColor)
                         nScrolls[0] = 1
                         jsonList[0].clear()
                         manageApi(binding.textExplore, getString(R.string.textGenresError), 0, binding.listExplore)
@@ -177,6 +171,7 @@ class SearchFragment : RecyclerFragment(
                         val genresValues = resources.getStringArray(R.array.genres_values)
                         genreName = resources.getStringArray(R.array.genres_entries)[genresValues.indexOf(mangaGenres[rand])]
                         binding.textExplore.text = getString(R.string.genresSuggestion, genreName)
+                        binding.textExplore.setTextColor(defaultTextColor)
                         nScrolls[0] = 1
                         jsonList[0].clear()
                         manageApi(binding.textExplore, getString(R.string.textGenresError), 0, binding.listExplore)
@@ -232,7 +227,7 @@ class SearchFragment : RecyclerFragment(
                 return true
             }
             override fun onQueryTextChange(searchString: String?): Boolean {
-                Log.d("mytagsearchView", searchString ?: "")
+                //Log.d("mytagsearchView", searchString ?: "")
                 return false
             }
         })
