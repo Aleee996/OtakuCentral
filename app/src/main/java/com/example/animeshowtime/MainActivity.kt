@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
 
         createNotificationChannel()
-        var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         sharedPreferences?.getBoolean("notificationOn", true).let {
             if (it == true) {
                 sharedPreferences?.getString("notificationInterval", "24h").let { string ->
