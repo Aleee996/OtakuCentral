@@ -108,6 +108,7 @@ abstract class RecyclerFragment(
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "GET"
 
+            //Log.d("mytagHttpReq", url.toString())
             //JSONize the data
             val inputStream = BufferedInputStream(connection.inputStream)
             val response = inputStream.bufferedReader().use { it.readText() }
@@ -153,7 +154,7 @@ abstract class RecyclerFragment(
                     recyclerView.layoutManager as GridLayoutManager
                     else recyclerView.layoutManager as LinearLayoutManager
                 val last = llm.findLastVisibleItemPosition()
-                if (last >= jsonList[i].size - 4 && hasNextPage[i]) {
+                if (jsonList[i].size !=0 && last >= jsonList[i].size - 4 && hasNextPage[i]) {
                     hasNextPage[i] = false
                     manageApi(
                         noResultFoundTextView,

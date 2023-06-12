@@ -3,6 +3,7 @@ package com.example.animeshowtime
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -139,7 +140,7 @@ class SearchFragment : RecyclerFragment(
                             rand = 0
                             animeGenres.add("1")
                         }
-                        searchString[0] = "https://api.jikan.moe/v4/anime?q=&genres=${animeGenres[rand]}"
+                        searchString[0] = "https://api.jikan.moe/v4/anime?q=&genres=${animeGenres[rand]}&page=1"
                         val genresValues = resources.getStringArray(R.array.genres_values)
                         genreName = resources.getStringArray(R.array.genres_entries)[genresValues.indexOf(animeGenres[rand])]
                         binding.textExplore.text = getString(R.string.genresSuggestion, genreName)
@@ -167,7 +168,7 @@ class SearchFragment : RecyclerFragment(
                             rand = 0
                             mangaGenres.add("1")
                         }
-                        searchString[0] = "https://api.jikan.moe/v4/manga?q=&genres=${mangaGenres[rand]}"
+                        searchString[0] = "https://api.jikan.moe/v4/manga?q=&genres=${mangaGenres[rand]}&page=1"
                         val genresValues = resources.getStringArray(R.array.genres_values)
                         genreName = resources.getStringArray(R.array.genres_entries)[genresValues.indexOf(mangaGenres[rand])]
                         binding.textExplore.text = getString(R.string.genresSuggestion, genreName)
@@ -198,7 +199,7 @@ class SearchFragment : RecyclerFragment(
                 rand = 0
                 animeGenres.add("1")
             }
-            searchString[0] = "https://api.jikan.moe/v4/anime?q=&genres=${animeGenres[rand]}"
+            searchString[0] = "https://api.jikan.moe/v4/anime?q=&genres=${animeGenres[rand]}&page=1"
             val genresValues = resources.getStringArray(R.array.genres_values)
             genreName = resources.getStringArray(R.array.genres_entries)[genresValues.indexOf(animeGenres[rand])]
             manageApi(binding.textExplore, getString(R.string.textGenresError), 0, binding.listExplore)
